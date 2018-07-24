@@ -1,5 +1,6 @@
 module.exports = function(app, db) {
-  app.get('/emails/search', (req, res) => {
-    res.send('received a get request to /emails/search');
+  app.post('/emails/search', (req, res) => {
+    console.log(req.body);
+    res.send('received a POST request to /emails/search');
   });
 };
