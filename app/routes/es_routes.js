@@ -10,7 +10,17 @@ module.exports = function(app, db) {
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
-    .then(response => {console.log(response)});
-    res.send('received a POST request to /emails/search');
+    .then(response => {
+      let emails = {};
+      response.hits.hits.map(hit => {
+        let email = hit._source;
+        email.score = hit._score;
+        let id = hit._source.id;
+        emails[`${id}`] = email;
+      });
+      const hits = response.hits.total;
+      // Return the emails and total hits
+      res.send( { emails, hits } );
+    });
   });
 };
