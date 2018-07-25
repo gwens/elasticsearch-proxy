@@ -2,6 +2,11 @@ const fetch = require('node-fetch');
 const elasticUrl = "https://search-search-archive-sxxeh2lvo7lacugez36nv2f4bq.us-east-2.es.amazonaws.com/";
 
 module.exports = function(app, db) {
+  //debug
+  app.get('/', (req, res) => {
+    res.send('getting');
+  });
+
   app.post('/:index/_search', (req, res) => {
     console.log(req.headers.host);
     // URL to search the specific Elasticsearch index requested
