@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 // Elasticsearch domain...
-const elasticUrl = "https://search-search-archive-sxxeh2lvo7lacugez36nv2f4bq.us-east-2.es.amazonaws.com/";
+const esDomain = "https://search-search-archive-sxxeh2lvo7lacugez36nv2f4bq.us-east-2.es.amazonaws.com/";
 // ...and the site that should be able to access it
 const allowedOrigin = "https://ambient-explorer.ml";
 
@@ -21,7 +21,7 @@ module.exports = function(app, db) {
   app.post('/:index/_search', (req, res) => {
     console.log(req.headers.host);
     // URL to search the specific Elasticsearch index requested
-    const fullUrl = elasticUrl + req.params.index + "/_search";
+    const fullUrl = esDomain + req.params.index + "/_search";
     // Forward the request to Elasticsearch and pass back the response
     fetch(fullUrl, {
       method: 'POST',
