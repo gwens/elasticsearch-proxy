@@ -12,7 +12,7 @@ module.exports = function(app, db) {
       body: JSON.stringify(req.body),
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json())
-    .catch(error => console.error('Error:', error))
+    .catch(error => res.send('Error:', error))
     .then(response => {
       res.send(response);
     });
