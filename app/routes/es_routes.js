@@ -1,8 +1,16 @@
 const fetch = require('node-fetch');
 const elasticUrl = "https://search-search-archive-sxxeh2lvo7lacugez36nv2f4bq.us-east-2.es.amazonaws.com/";
+const allowedOrigin = "https://ambient-explorer.ml";
 
 module.exports = function(app, db) {
-  //debug
+  // Enable access to the API from a specific origin
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", allowedOrigin);
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
+  // Debug
   app.get('/', (req, res) => {
     res.send('getting');
   });
