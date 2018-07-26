@@ -11,7 +11,7 @@ Your Elasticsearch access policy can then be set to allow access only from the s
 1. Install dependencies with `npm install`.
 2. Modify `app/routes/es_routes.js` with your own Elasticsearch domain (`esDomain`) and the site that you want to access it from (`allowedOrigin`).
 3. Run the application in development mode with `npm run dev` or on the server with `node server.js`.
-4. Send your search query as a POST request to `https://[localhost:3201 OR your-host-domain]/[name-of-elasticsearch-index]/_search` in exactly the same format as if you were sending it direct to Elasticsearch, e.g.
+4. Send your search `query` as a POST request to `https://[localhost:3201 OR your-host-domain]/[name-of-elasticsearch-index]/_search` in the same format as if you were sending it direct to Elasticsearch, e.g.
 
 ```
 fetch(proxyUrl, {
